@@ -8,13 +8,31 @@
 // -----------------------------  VIDEO EDITOR  ----------------------------- //
 function VideoEditor() {
   let videoEl = null;
+  let scaleX = 1;
+  let scaleY = 1;
+
+  function update() {
+    videoEl.style.transform = `scale(${scaleX}, ${scaleY})`;
+  }
 
   this.init = () => {
     videoEl = document.getElementById('video-player');
   };
 
+  this.scaleX = sx => {
+    scaleX = sx;
+    update();
+  };
+
+  this.scaleY = sy => {
+    scaleY = sy;
+    update();
+  };
+
   this.scale = (sx, sy) => {
-    videoEl.style.transform = `scale(${sx}, ${sy})`;
+    scaleX = sx;
+    scaleY = sy;
+    update();
   };
 }
 
@@ -59,14 +77,14 @@ function UIManager() {
     const scaleX = parseFloat(this.value);
 
     if (isNaN(scaleX)) return;
-    videoEditor.scale(scaleX, 1);
+    videoEditor.scaleX(scaleX);
   }
 
   function onScaleY() {
     const scaleY = parseFloat(this.value);
 
     if (isNaN(scaleY)) return;
-    videoEditor.scale(1, scaleY);
+    videoEditor.scaleY(scaleY);
   }
 
   function onScaleReset() {
