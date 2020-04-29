@@ -7,8 +7,6 @@
 
 <!doctype html>
 <html lang="en">
-  
-  <head>
     <title>Video.js</title>
     <link rel="icon"
           type="image/png"
@@ -124,6 +122,31 @@
                 <div>
                   <input id="perspective-input" type="number" value="0">
                   <input id="perspective-range" type="range" min="0" max="5000" step="10" value="0">
+                </div>
+              </div>
+            </div>
+            <span class="material-icons">
+              restore
+            </span>
+          </div>
+          <div class="config">
+            <p>
+              Config
+            </p>
+            <div>
+              <div>
+                <p>Overflow</p>
+                <div>
+                  <input id="overflow-auto-radio" name="overflow" type="radio" checked data-overflow="auto">
+                  <label for="overflow-auto-radio">
+                    Auto
+                  </label>
+                </div>
+                <div>
+                  <input id="overflow-hidden-radio" name="overflow" type="radio" data-overflow="hidden">
+                  <label for="overflow-hidden-radio">
+                    Hidden
+                  </label>
                 </div>
               </div>
             </div>

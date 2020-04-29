@@ -190,6 +190,19 @@ function UIManager() {
     onPerspective.call(perspectiveInputEl);
   }
 
+  function onConfigOverflow() {
+    const videoParentEl = document.getElementById('player');
+
+    videoParentEl.style.overflow = this.dataset['overflow'];
+  }
+
+  function onConfigReset() {
+    const overflowAutoEl = document.getElementById('overflow-auto-radio');
+
+    overflowAutoEl.checked = true;
+    onConfigOverflow.call(overflowAutoEl);
+  }
+
   // ---------------------------  TOOL FUNCTIONS  --------------------------- //
   function setupDragAndDrop() {
     const dropArea = document.getElementById('video-input');
@@ -242,6 +255,8 @@ function UIManager() {
     const rotateYRangeEl = document.getElementById('rotate-y-range');
     const perspectiveInputEl = document.getElementById('perspective-input');
     const perspectiveRangeEl = document.getElementById('perspective-range');
+    const overflowAutoEl = document.getElementById('overflow-auto-radio');
+    const overflowHiddenEl = document.getElementById('overflow-hidden-radio');
     const bindInputAndRange = (inputEl, rangeEl, callback) => {
       inputEl.addEventListener(
         'input',
@@ -284,6 +299,14 @@ function UIManager() {
     document
       .querySelector('#tools > div.perspective > span.material-icons')
       .addEventListener('click', onPerspectiveReset, false);
+
+    // Config
+    overflowAutoEl.addEventListener('change', onConfigOverflow, false);
+    overflowHiddenEl.addEventListener('change', onConfigOverflow, false);
+    // Reset
+    document
+      .querySelector('#tools > div.config > span.material-icons')
+      .addEventListener('click', onConfigReset, false);
   }
 
   // --------------------------  PUBLIC FUNCTIONS  -------------------------- //
