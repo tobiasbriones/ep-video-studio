@@ -10,9 +10,15 @@ function VideoEditor() {
   let videoEl = null;
   let scaleX = 1;
   let scaleY = 1;
+  let rotate = 0;
 
   function update() {
-    videoEl.style.transform = `scale(${scaleX}, ${scaleY})`;
+    console.log(4);
+
+    videoEl.style.transform = `
+      scale(${scaleX}, ${scaleY})
+      rotate(${rotate}deg)
+    `;
   }
 
   this.init = () => {
@@ -32,6 +38,11 @@ function VideoEditor() {
   this.scale = (sx, sy) => {
     scaleX = sx;
     scaleY = sy;
+    update();
+  };
+
+  this.rotate = deg => {
+    rotate = deg;
     update();
   };
 }
@@ -101,6 +112,22 @@ function UIManager() {
     onScaleY.call(scaleYInputEl);
   }
 
+  function onRotate() {
+    const rotateDeg = parseFloat(this.value);
+
+    if (isNaN(rotateDeg)) return;
+    videoEditor.rotate(rotateDeg);
+  }
+
+  function onRotateReset() {
+    const rotateInputEl = document.getElementById('rotate-input');
+    const rotateRangeEl = document.getElementById('rotate-range');
+
+    rotateInputEl.value = 0;
+    rotateRangeEl.value = 0;
+    onRotate.call(rotateInputEl);
+  }
+
   // ---------------------------  TOOL FUNCTIONS  --------------------------- //
   function setupDragAndDrop() {
     const dropArea = document.getElementById('video-input');
@@ -145,10 +172,19 @@ function UIManager() {
     const scaleXRangeEl = document.getElementById('scale-x-range');
     const scaleYInputEl = document.getElementById('scale-y-input');
     const scaleYRangeEl = document.getElementById('scale-y-range');
+    const rotateInputEl = document.getElementById('rotate-input');
+    const rotateRangeEl = document.getElementById('rotate-range');
 
     // Scaling
     // Scale X
-    scaleXInputEl.addEventListener('input', onScaleX, false);
+    scaleXInputEl.addEventListener(
+      'input',
+      e => {
+        scaleXRangeEl.value = e.target.value;
+        onScaleX.call(scaleXInputEl);
+      },
+      false
+    );
     scaleXRangeEl.addEventListener(
       'input',
       e => {
@@ -158,7 +194,14 @@ function UIManager() {
       false
     );
     // Scale Y
-    scaleYInputEl.addEventListener('input', onScaleY, false);
+    scaleYInputEl.addEventListener(
+      'input',
+      e => {
+        scaleYRangeEl.value = e.target.value;
+        onScaleY.call(scaleYInputEl);
+      },
+      false
+    );
     scaleYRangeEl.addEventListener(
       'input',
       e => {
@@ -169,8 +212,30 @@ function UIManager() {
     );
     // Reset
     document
-      .querySelector('#tools > div > span.material-icons')
+      .querySelector('#tools > div.scale > span.material-icons')
       .addEventListener('click', onScaleReset, false);
+
+    // Rotating
+    rotateInputEl.addEventListener(
+      'input',
+      e => {
+        rotateRangeEl.value = e.target.value;
+        onRotate.call(rotateInputEl);
+      },
+      false
+    );
+    rotateRangeEl.addEventListener(
+      'input',
+      e => {
+        rotateInputEl.value = e.target.value;
+        onRotate.call(rotateInputEl);
+      },
+      false
+    );
+    // Reset
+    document
+      .querySelector('#tools > div.rotate > span.material-icons')
+      .addEventListener('click', onRotateReset, false);
   }
 
   // --------------------------  PUBLIC FUNCTIONS  -------------------------- //

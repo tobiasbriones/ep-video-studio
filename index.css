@@ -165,10 +165,10 @@ body {
 #tools {
   display: grid;
   margin: 16px 64px;
+  grid-template-columns: auto;
 }
 
 #tools > div {
-  width: 100%;
   margin: 16px;
 }
 
@@ -212,8 +212,8 @@ body {
     bottom: 16px;
   }
 
-  #tools > div {
-    width: 50%;
+  #tools {
+    grid-template-columns: auto auto;
   }
 }
 
@@ -261,8 +261,12 @@ body {
     width: 90%;
   }
 
+  #tools {
+    grid-template-columns: auto auto auto;
+  }
+
   #tools > div {
-    width: 33%;
+    margin: 8px 32px;
   }
 }
 
