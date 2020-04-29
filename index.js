@@ -69,6 +69,20 @@ function UIManager() {
     videoEditor.scale(1, scaleY);
   }
 
+  function onScaleReset() {
+    const scaleXInputEl = document.getElementById('scale-x-input');
+    const scaleXRangeEl = document.getElementById('scale-x-range');
+    const scaleYInputEl = document.getElementById('scale-y-input');
+    const scaleYRangeEl = document.getElementById('scale-y-range');
+
+    scaleXInputEl.value = 1;
+    scaleXRangeEl.value = 1;
+    scaleYInputEl.value = 1;
+    scaleYRangeEl.value = 1;
+    onScaleX.call(scaleXInputEl);
+    onScaleY.call(scaleYInputEl);
+  }
+
   // ---------------------------  TOOL FUNCTIONS  --------------------------- //
   function setupDragAndDrop() {
     const dropArea = document.getElementById('video-input');
@@ -109,13 +123,36 @@ function UIManager() {
   }
 
   function setupTools() {
+    const scaleXInputEl = document.getElementById('scale-x-input');
+    const scaleXRangeEl = document.getElementById('scale-x-range');
+    const scaleYInputEl = document.getElementById('scale-y-input');
+    const scaleYRangeEl = document.getElementById('scale-y-range');
+
     // Scaling
+    // Scale X
+    scaleXInputEl.addEventListener('input', onScaleX, false);
+    scaleXRangeEl.addEventListener(
+      'input',
+      e => {
+        scaleXInputEl.value = e.target.value;
+        onScaleX.call(scaleXInputEl);
+      },
+      false
+    );
+    // Scale Y
+    scaleYInputEl.addEventListener('input', onScaleY, false);
+    scaleYRangeEl.addEventListener(
+      'input',
+      e => {
+        scaleYInputEl.value = e.target.value;
+        onScaleY.call(scaleYInputEl);
+      },
+      false
+    );
+    // Reset
     document
-      .getElementById('scale-x-input')
-      .addEventListener('input', onScaleX, false);
-    document
-      .getElementById('scale-y-input')
-      .addEventListener('input', onScaleY, false);
+      .querySelector('#tools > div > span.material-icons')
+      .addEventListener('click', onScaleReset, false);
   }
 
   // --------------------------  PUBLIC FUNCTIONS  -------------------------- //

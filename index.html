@@ -40,7 +40,9 @@
             </div>
           </div>
           <div class="video-drag-and-drop">
-            <img src="img/library_add.svg" alt="Add new video">
+            <span class="material-icons">
+              library_add
+            </span>
             <p>
               Drag and drop to add a new video
             </p>
@@ -68,20 +70,19 @@
               <div>
                 <p>Scale X</p>
                 <div>
-                  <input id="scale-x-input" type="text">
-                  <label for="scale-x-input">
-                    Scale X value
-                  </label>
+                  <input id="scale-x-input" type="number" value="1">
+                  <input id="scale-x-range" type="range" min="-5" max="5" step="0.1" value="1">
                 </div>
                 <p>Scale Y</p>
                 <div>
-                  <input id="scale-y-input" type="text">
-                  <label for="scale-y-input">
-                    Scale Y value
-                  </label>
+                  <input id="scale-y-input" type="number" value="1">
+                  <input id="scale-y-range" type="range" min="-5" max="5" step="0.1" value="1">
                 </div>
               </div>
             </div>
+            <span class="material-icons">
+              restore
+            </span>
           </div>
         </div>
       </div>
