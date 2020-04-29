@@ -5,8 +5,23 @@
  * LICENSE file in the root directory of this source tree.
  */
 
+// -----------------------------  VIDEO EDITOR  ----------------------------- //
+function VideoEditor() {
+  let videoEl = null;
+
+  this.init = () => {
+    videoEl = document.getElementById('video-player');
+  };
+
+  this.scale = (sx, sy) => {
+    videoEl.style.transform = `scale(${sx}, ${sy})`;
+  };
+}
+
 // ------------------------------  UI MANAGER  ------------------------------ //
 function UIManager() {
+  let videoEditor = new VideoEditor();
+
   // -----------------------------  CALLBACKS  ------------------------------ //
   function preventDefault(e) {
     e.preventDefault();
@@ -37,6 +52,21 @@ function UIManager() {
     videoEl.classList.remove('wider');
     videoInputEl.classList.remove('collapsed');
     videoInputEl.classList.add('expanded');
+  }
+
+  // -----------------------------  TOOLS  ------------------------------ //
+  function onScaleX() {
+    const scaleX = parseFloat(this.value);
+
+    if (isNaN(scaleX)) return;
+    videoEditor.scale(scaleX, 1);
+  }
+
+  function onScaleY() {
+    const scaleY = parseFloat(this.value);
+
+    if (isNaN(scaleY)) return;
+    videoEditor.scale(1, scaleY);
   }
 
   // ---------------------------  TOOL FUNCTIONS  --------------------------- //
@@ -78,8 +108,20 @@ function UIManager() {
     });
   }
 
+  function setupTools() {
+    // Scaling
+    document
+      .getElementById('scale-x-input')
+      .addEventListener('input', onScaleX, false);
+    document
+      .getElementById('scale-y-input')
+      .addEventListener('input', onScaleY, false);
+  }
+
   // --------------------------  PUBLIC FUNCTIONS  -------------------------- //
   this.init = () => {
+    videoEditor.init();
+
     // Init the video input
     document
       .getElementById('video-chooser-input')
@@ -95,6 +137,9 @@ function UIManager() {
 
     // Init the video drag and drop functionality
     setupDragAndDrop();
+
+    // Init the tools
+    setupTools();
   };
 }
 

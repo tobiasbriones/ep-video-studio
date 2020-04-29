@@ -159,6 +159,12 @@ body {
   width: 100%;
 }
 
+/* ------------------------------  TOOLS PANEL ------------------------------ */
+#tools {
+  display: grid;
+  margin: 16px 64px;
+}
+
 @media (min-width: 600px) {
   #content {
     padding: 32px 5%;
