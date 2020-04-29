@@ -1,0 +1,179 @@
+/*
+ * Copyright (c) 2020 Tobias Briones.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+* {
+  position: relative;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Roboto', sans-serif;
+}
+
+html,
+body {
+  min-width: 360px;
+}
+
+#content {
+  padding: 16px;
+}
+
+/* -----------------------------  VIDEO INPUT  ------------------------------ */
+#video-input {
+  margin: auto;
+  padding: 32px;
+}
+
+#video-input > p {
+  font-weight: bold;
+  text-align: center;
+}
+
+#video-input > .video-chooser {
+  padding: 16px 0;
+}
+
+#video-input.highlight .video-drag-and-drop {
+  border: 2px solid brown;
+}
+
+/* ----------------------  VIDEO CUSTOM INPUT CHOOSER ---*------------------- */
+#video-input > .video-chooser > .input {
+  display: flex;
+}
+
+#video-chooser-input {
+  position: absolute;
+  width: 0.1px;
+  height: 0.1px;
+  opacity: 0;
+  overflow: hidden;
+  z-index: -1;
+}
+
+#video-chooser-input + label {
+  display: inline-block;
+  padding: 16px;
+  margin: auto;
+  font-size: 1.25em;
+  font-weight: 700;
+  color: white;
+  background-color: #757575;
+  border-radius: 8px;
+  transition: all 200ms;
+  cursor: pointer;
+}
+
+#video-chooser-input:focus + label,
+#video-chooser-input + label:hover {
+  background-color: #c62828;
+}
+
+/* -----------------------  VIDEO INPUT DRAG AND DROP ----------------------- */
+#video-input > .video-drag-and-drop {
+  width: 100%;
+  height: 200px;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+}
+
+#video-input > .video-drag-and-drop > img {
+  position: absolute;
+  height: 50%;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #757575;
+}
+
+#video-input > .video-drag-and-drop > p {
+  position: absolute;
+  width: 100%;
+  padding: 0 8px;
+  bottom: 16px;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+/* -----------------------------  VIDEO PLAYER ------------------------------ */
+#player {
+  width: 100%;
+}
+
+#video-player {
+  width: 100%;
+}
+
+@media (min-width: 600px) {
+  #content {
+    padding: 32px 5%;
+  }
+
+  #video-input > .video-chooser {
+    padding: 32px 0;
+  }
+
+  #video-input > .video-drag-and-drop {
+    width: 100%;
+    height: 250px;
+    padding: 64px;
+    border: 1px solid rgba(0, 0, 0, 0.15);
+  }
+
+  #video-input > .video-drag-and-drop > p {
+    padding: 0 16px;
+    bottom: 16px;
+  }
+}
+
+@media (min-width: 1024px) {
+  #content {
+    padding: 32px;
+  }
+
+  #wrapper-1 {
+    display: flex;
+  }
+
+  #video-input {
+    width: 30%;
+    padding: 0 16px;
+  }
+
+  #player {
+    width: 70%;
+  }
+}
+
+@media (min-width: 1920px) {
+  #content {
+    padding: 64px;
+  }
+
+  #video-input {
+    width: 25%;
+    padding: 0 64px;
+  }
+
+  #player {
+    width: 75%;
+  }
+}
+
+@media (min-width: 2160px) {
+  #content {
+    padding: 128px;
+  }
+
+  #video-input {
+    width: 20%;
+  }
+
+  #player {
+    width: 80%;
+  }
+}

@@ -1,0 +1,59 @@
+<!--
+  -- Copyright (c) 2020 Tobias Briones.
+  --
+  -- This source code is licensed under the MIT license found in the
+  -- LICENSE file in the root directory of this source tree.
+  -->
+
+<!doctype html>
+<html lang="en">
+
+  <head>
+    <title>Video.js</title>
+    <link rel="icon"
+          type="image/png"
+          href="https://raw.githubusercontent.com/TobiasBriones/images/master/example-projects/example-projects/favicon.png"
+          sizes="96x96">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto&display=swap">
+    <link rel="stylesheet" href="index.css">
+    <link rel="icon" type="image/x-icon" href="favicon.png">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#455A64">
+  </head>
+
+  <body>
+
+    <div id="content">
+      <div id="wrapper-1">
+        <div id="video-input">
+          <p>
+            Add or drop your video here
+          </p>
+          <div class="video-chooser">
+            <div class="input">
+              <input id="video-chooser-input" type="file" accept="video/mp4">
+              <label for="video-chooser-input">
+                Load a video
+              </label>
+            </div>
+          </div>
+          <div class="video-drag-and-drop">
+            <img src="img/library_add.svg" alt="Add new video">
+            <p>
+              Drag and drop to add a new video
+            </p>
+          </div>
+        </div>
+  
+        <div id="player">
+          <video id="video-player" controls autoplay></video>
+        </div>
+      </div>
+    </div>
+
+    <script src="index.js"></script>
+
+  </body>
+
+</html>
