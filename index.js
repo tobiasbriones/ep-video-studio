@@ -21,6 +21,24 @@ function UIManager() {
     videoEl.src = fileUrl;
   }
 
+  function onExpandVideoInputLess() {
+    const videoInputEl = document.getElementById('video-input');
+    const videoEl = document.getElementById('player');
+
+    videoInputEl.classList.remove('expanded');
+    videoInputEl.classList.add('collapsed');
+    videoEl.classList.add('wider');
+  }
+
+  function onExpandVideoInputMore() {
+    const videoInputEl = document.getElementById('video-input');
+    const videoEl = document.getElementById('player');
+
+    videoEl.classList.remove('wider');
+    videoInputEl.classList.remove('collapsed');
+    videoInputEl.classList.add('expanded');
+  }
+
   // ---------------------------  TOOL FUNCTIONS  --------------------------- //
   function setupDragAndDrop() {
     const dropArea = document.getElementById('video-input');
@@ -66,6 +84,14 @@ function UIManager() {
     document
       .getElementById('video-chooser-input')
       .addEventListener('change', onLoadVideo, false);
+
+    document
+      .querySelector('#video-input > .expand-less')
+      .addEventListener('click', onExpandVideoInputLess, false);
+
+    document
+      .querySelector('#video-input > .expand-more')
+      .addEventListener('click', onExpandVideoInputMore, false);
 
     // Init the video drag and drop functionality
     setupDragAndDrop();
