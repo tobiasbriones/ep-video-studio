@@ -7,7 +7,7 @@
 
 <!doctype html>
 <html lang="en">
-
+  
   <head>
     <title>Video.js</title>
     <link rel="icon"
@@ -17,14 +17,13 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto&display=swap">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="index.css">
-    <link rel="icon" type="image/x-icon" href="favicon.png">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="theme-color" content="#455A64">
   </head>
-
+  
   <body>
-
+    
     <div id="content">
       <div id="wrapper-1">
         <div id="video-input">
@@ -54,13 +53,13 @@
             expand_more
           </span>
         </div>
-  
+        
         <div id="player">
           <video id="video-player" controls autoplay></video>
         </div>
       </div>
+      
       <div>
-        
         <div id="tools">
           <div class="scale">
             <p>
@@ -92,8 +91,39 @@
               <div>
                 <p>Rotate angle</p>
                 <div>
-                  <input id="rotate-input" type="number" value="1">
-                  <input id="rotate-range" type="range" min="-180" max="180" step="1" value="1">
+                  <input id="rotate-input" type="number" value="0">
+                  <input id="rotate-range" type="range" min="-180" max="180" step="1" value="0">
+                </div>
+              </div>
+              <div>
+                <p>Rotate X</p>
+                <div>
+                  <input id="rotate-x-input" type="number" value="0">
+                  <input id="rotate-x-range" type="range" min="-180" max="180" step="1" value="0">
+                </div>
+              </div>
+              <div>
+                <p>Rotate Y</p>
+                <div>
+                  <input id="rotate-y-input" type="number" value="0">
+                  <input id="rotate-y-range" type="range" min="-180" max="180" step="1" value="0">
+                </div>
+              </div>
+            </div>
+            <span class="material-icons">
+              restore
+            </span>
+          </div>
+          <div class="perspective">
+            <p>
+              Perspective
+            </p>
+            <div>
+              <div>
+                <p>Perspective</p>
+                <div>
+                  <input id="perspective-input" type="number" value="0">
+                  <input id="perspective-range" type="range" min="0" max="5000" step="10" value="0">
                 </div>
               </div>
             </div>
@@ -104,9 +134,9 @@
         </div>
       </div>
     </div>
-
+    
     <script src="index.js"></script>
-
+  
   </body>
 
 </html>

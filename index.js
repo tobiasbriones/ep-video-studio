@@ -8,21 +8,28 @@
 // -----------------------------  VIDEO EDITOR  ----------------------------- //
 function VideoEditor() {
   let videoEl = null;
+  let videoParentEl = null;
   let scaleX = 1;
   let scaleY = 1;
   let rotate = 0;
+  let rotateX = 0;
+  let rotateY = 0;
+  let perspective = 0;
 
   function update() {
-    console.log(4);
-
     videoEl.style.transform = `
       scale(${scaleX}, ${scaleY})
       rotate(${rotate}deg)
+      rotateX(${rotateX}deg)
+      rotateY(${rotateY}deg)
     `;
+    videoParentEl.style.perspective =
+      perspective === 0 ? 'none' : `${perspective}px`;
   }
 
   this.init = () => {
     videoEl = document.getElementById('video-player');
+    videoParentEl = videoEl.parentElement;
   };
 
   this.scaleX = sx => {
@@ -43,6 +50,21 @@ function VideoEditor() {
 
   this.rotate = deg => {
     rotate = deg;
+    update();
+  };
+
+  this.rotateX = deg => {
+    rotateX = deg;
+    update();
+  };
+
+  this.rotateY = deg => {
+    rotateY = deg;
+    update();
+  };
+
+  this.perspective = px => {
+    perspective = px;
     update();
   };
 }
@@ -119,13 +141,53 @@ function UIManager() {
     videoEditor.rotate(rotateDeg);
   }
 
+  function onRotateX() {
+    const rotateXDeg = parseFloat(this.value);
+
+    if (isNaN(rotateXDeg)) return;
+    videoEditor.rotateX(rotateXDeg);
+  }
+
+  function onRotateY() {
+    const rotateYDeg = parseFloat(this.value);
+
+    if (isNaN(rotateYDeg)) return;
+    videoEditor.rotateY(rotateYDeg);
+  }
+
   function onRotateReset() {
     const rotateInputEl = document.getElementById('rotate-input');
     const rotateRangeEl = document.getElementById('rotate-range');
+    const rotateXInputEl = document.getElementById('rotate-x-input');
+    const rotateXRangeEl = document.getElementById('rotate-x-range');
+    const rotateYInputEl = document.getElementById('rotate-y-input');
+    const rotateYRangeEl = document.getElementById('rotate-y-range');
 
     rotateInputEl.value = 0;
     rotateRangeEl.value = 0;
+    rotateXInputEl.value = 0;
+    rotateXRangeEl.value = 0;
+    rotateYInputEl.value = 0;
+    rotateYRangeEl.value = 0;
     onRotate.call(rotateInputEl);
+    onRotateX.call(rotateInputEl);
+    onRotateY.call(rotateInputEl);
+  }
+
+  function onPerspective() {
+    const perspectivePx = parseInt(this.value);
+
+    if (isNaN(perspectivePx)) return;
+    videoEditor.perspective(perspectivePx);
+  }
+
+  function onPerspectiveReset() {
+    const perspectiveInputEl = document.getElementById('perspective-input');
+    const perspectiveRangeEl = document.getElementById('perspective-range');
+
+    perspectiveInputEl.value = 0;
+    perspectiveRangeEl.value = 0;
+    onPerspective.call(perspectiveInputEl);
   }
 
   // ---------------------------  TOOL FUNCTIONS  --------------------------- //
@@ -174,68 +236,54 @@ function UIManager() {
     const scaleYRangeEl = document.getElementById('scale-y-range');
     const rotateInputEl = document.getElementById('rotate-input');
     const rotateRangeEl = document.getElementById('rotate-range');
+    const rotateXInputEl = document.getElementById('rotate-x-input');
+    const rotateXRangeEl = document.getElementById('rotate-x-range');
+    const rotateYInputEl = document.getElementById('rotate-y-input');
+    const rotateYRangeEl = document.getElementById('rotate-y-range');
+    const perspectiveInputEl = document.getElementById('perspective-input');
+    const perspectiveRangeEl = document.getElementById('perspective-range');
+    const bindInputAndRange = (inputEl, rangeEl, callback) => {
+      inputEl.addEventListener(
+        'input',
+        e => {
+          rangeEl.value = e.target.value;
+          callback.call(inputEl);
+        },
+        false
+      );
+      rangeEl.addEventListener(
+        'input',
+        e => {
+          inputEl.value = e.target.value;
+          callback.call(inputEl);
+        },
+        false
+      );
+    };
 
     // Scaling
-    // Scale X
-    scaleXInputEl.addEventListener(
-      'input',
-      e => {
-        scaleXRangeEl.value = e.target.value;
-        onScaleX.call(scaleXInputEl);
-      },
-      false
-    );
-    scaleXRangeEl.addEventListener(
-      'input',
-      e => {
-        scaleXInputEl.value = e.target.value;
-        onScaleX.call(scaleXInputEl);
-      },
-      false
-    );
-    // Scale Y
-    scaleYInputEl.addEventListener(
-      'input',
-      e => {
-        scaleYRangeEl.value = e.target.value;
-        onScaleY.call(scaleYInputEl);
-      },
-      false
-    );
-    scaleYRangeEl.addEventListener(
-      'input',
-      e => {
-        scaleYInputEl.value = e.target.value;
-        onScaleY.call(scaleYInputEl);
-      },
-      false
-    );
+    bindInputAndRange(scaleXInputEl, scaleXRangeEl, onScaleX);
+    bindInputAndRange(scaleYInputEl, scaleYRangeEl, onScaleY);
     // Reset
     document
       .querySelector('#tools > div.scale > span.material-icons')
       .addEventListener('click', onScaleReset, false);
 
     // Rotating
-    rotateInputEl.addEventListener(
-      'input',
-      e => {
-        rotateRangeEl.value = e.target.value;
-        onRotate.call(rotateInputEl);
-      },
-      false
-    );
-    rotateRangeEl.addEventListener(
-      'input',
-      e => {
-        rotateInputEl.value = e.target.value;
-        onRotate.call(rotateInputEl);
-      },
-      false
-    );
+    bindInputAndRange(rotateInputEl, rotateRangeEl, onRotate);
+    bindInputAndRange(rotateXInputEl, rotateXRangeEl, onRotateX);
+    bindInputAndRange(rotateYInputEl, rotateYRangeEl, onRotateY);
     // Reset
     document
       .querySelector('#tools > div.rotate > span.material-icons')
       .addEventListener('click', onRotateReset, false);
+
+    // Perspective
+    bindInputAndRange(perspectiveInputEl, perspectiveRangeEl, onPerspective);
+    // Reset
+    document
+      .querySelector('#tools > div.perspective > span.material-icons')
+      .addEventListener('click', onPerspectiveReset, false);
   }
 
   // --------------------------  PUBLIC FUNCTIONS  -------------------------- //
