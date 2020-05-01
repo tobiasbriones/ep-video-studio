@@ -83,8 +83,14 @@ function UIManager() {
     if (!this.files[0]) return;
     const videoEl = document.getElementById('video-player');
     const fileUrl = window.URL.createObjectURL(this.files[0]);
+    const getFileName = name => {
+      const index = name.indexOf('.');
 
+      if (index === -1) return name;
+      return name.substring(0, index);
+    };
     videoEl.src = fileUrl;
+    videoEl.dataset['video_name'] = getFileName(this.files[0].name);
   }
 
   function onExpandVideoInputLess() {
@@ -242,22 +248,28 @@ function UIManager() {
     const videoEl = document.getElementById('video-player');
     const canvasEl = document.getElementById('screenshot-canvas');
     const ctx = canvasEl.getContext('2d');
-
     canvasEl.width = videoEl.videoWidth;
     canvasEl.height = videoEl.videoHeight;
+    canvasEl.dataset['video_name'] = videoEl.dataset['video_name'];
+    canvasEl.dataset['time'] = videoEl.currentTime;
+
     ctx.drawImage(videoEl, 0, 0, canvasEl.width, canvasEl.height);
   }
 
   function onSaveScreenshot() {
+    const videoEl = document.getElementById('video-player');
     const canvasEl = document.getElementById('screenshot-canvas');
-    const data = canvasEl.toDataURL('image/png');
-    const newWindow = window.open('about:blank', 'img');
-    const imgEl = document.createElement('img');
-    imgEl.src = data;
-    imgEl.alt = 'img';
-    console.log(canvasEl);
+    const videoName = canvasEl.dataset['video_name'];
 
-    newWindow.document.body.appendChild(imgEl);
+    if (videoEl.readyState !== 4 || !videoName) return;
+    const data = canvasEl.toDataURL('image/jpeg');
+    const time = canvasEl.dataset['time'];
+    const imageName = `${videoName} - ${time}.jpeg`;
+    const linkEl = document.createElement('a');
+    linkEl.href = data;
+    linkEl.download = imageName;
+
+    linkEl.click();
   }
 
   // ---------------------------  TOOL FUNCTIONS  --------------------------- //

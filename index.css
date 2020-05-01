@@ -307,7 +307,7 @@ input[type='range']::-moz-range-thumb {
 #tools .save-screenshot-pane > canvas {
   display: block;
   width: 100%;
-  background-color: #737373;
+  background-color: #d0d0d0;
 }
 
 #capture-screenshot {
@@ -364,7 +364,7 @@ input[type='range']::-moz-range-thumb {
 
   #tools .save-screenshot-pane {
     display: grid;
-    grid-template-columns: auto auto;
+    grid-template-columns: 30fr 70fr;
   }
 
   #tools .save-screenshot-pane > .buttons {
