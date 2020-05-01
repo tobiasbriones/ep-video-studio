@@ -7,7 +7,8 @@
 
 <!doctype html>
 <html lang="en">
-    <title>Video.js</title>
+  <head>
+    <title>Video Studio.js</title>
     <link rel="icon"
           type="image/png"
           href="https://raw.githubusercontent.com/TobiasBriones/images/master/example-projects/example-projects/favicon.png"
@@ -65,15 +66,37 @@
             </p>
             <div>
               <div>
-                <p>Scale X</p>
-                <div>
-                  <input id="scale-x-input" type="number" value="1" placeholder="Scale X">
-                  <input id="scale-x-range" type="range" min="-5" max="5" step="0.1" value="1">
+                <div class="box">
+                  <label for="scale-x-input">
+                    Scale X
+                  </label>
+                  <input id="scale-x-input"
+                         type="number"
+                         value="1"
+                         placeholder="Scale X">
+                  
+                  <label for="scale-x-range"></label>
+                  <input id="scale-x-range"
+                         type="range"
+                         min="-5"
+                         max="5"
+                         step="0.1"
+                         value="1">
                 </div>
-                <p>Scale Y</p>
-                <div>
-                  <input id="scale-y-input" type="number" value="1" placeholder="Scale Y">
-                  <input id="scale-y-range" type="range" min="-5" max="5" step="0.1" value="1">
+                <div class="box">
+                  <label for="scale-y-input">Scale Y</label>
+                  <input id="scale-y-input"
+                         type="number"
+                         value="1"
+                         placeholder="Scale Y">
+                  
+                  <label for="scale-y-range"></label>
+                  <input id="scale-y-range"
+                         type="range"
+                         min="-5"
+                         max="5"
+                         step="0.1"
+                         value="1">
                 </div>
               </div>
             </div>
@@ -87,24 +110,60 @@
             </p>
             <div>
               <div>
-                <p>Rotate angle</p>
-                <div>
-                  <input id="rotate-input" type="number" value="0" placeholder="Rotate">
-                  <input id="rotate-range" type="range" min="-180" max="180" step="1" value="0">
+                <div class="box">
+                  <label for="rotate-input">
+                    Rotate (degree)
+                  </label>
+                  <input id="rotate-input"
+                         type="number"
+                         value="0"
+                         placeholder="Rotate">
+                  
+                  <label for="rotate-range"></label>
+                  <input id="rotate-range"
+                         type="range"
+                         min="-180"
+                         max="180"
+                         step="1"
+                         value="0">
                 </div>
               </div>
               <div>
-                <p>Rotate X</p>
-                <div>
-                  <input id="rotate-x-input" type="number" value="0" placeholder="Rotate X">
-                  <input id="rotate-x-range" type="range" min="-180" max="180" step="1" value="0">
+                <div class="box">
+                  <label for="rotate-x-input">
+                    Rotate X
+                  </label>
+                  <input id="rotate-x-input"
+                         type="number"
+                         value="0"
+                         placeholder="Rotate X">
+                  
+                  <label for="rotate-x-range"></label>
+                  <input id="rotate-x-range"
+                         type="range"
+                         min="-180"
+                         max="180"
+                         step="1"
+                         value="0">
                 </div>
               </div>
               <div>
-                <p>Rotate Y</p>
-                <div>
-                  <input id="rotate-y-input" type="number" value="0" placeholder="Rotate Y">
-                  <input id="rotate-y-range" type="range" min="-180" max="180" step="1" value="0">
+                <div class="box">
+                  <label for="rotate-y-input">
+                    Rotate Y
+                  </label>
+                  <input id="rotate-y-input"
+                         type="number"
+                         value="0"
+                         placeholder="Rotate Y">
+                  
+                  <label for="rotate-y-range"></label>
+                  <input id="rotate-y-range"
+                         type="range"
+                         min="-180"
+                         max="180"
+                         step="1"
+                         value="0">
                 </div>
               </div>
             </div>
@@ -118,10 +177,22 @@
             </p>
             <div>
               <div>
-                <p>Perspective</p>
-                <div>
-                  <input id="perspective-input" type="number" value="0" placeholder="Perspective">
-                  <input id="perspective-range" type="range" min="0" max="5000" step="10" value="0">
+                <div class="box">
+                  <label for="perspective-input">
+                    Perspective (pixel)
+                  </label>
+                  <input id="perspective-input"
+                         type="number"
+                         value="0"
+                         placeholder="Perspective">
+                  
+                  <label for="perspective-range"></label>
+                  <input id="perspective-range"
+                         type="range"
+                         min="0"
+                         max="5000"
+                         step="10"
+                         value="0">
                 </div>
               </div>
             </div>
@@ -136,13 +207,13 @@
             <div>
               <div>
                 <p>Overflow</p>
-                <div>
+                <div class="box">
                   <input id="overflow-auto-radio" name="overflow" type="radio" checked data-overflow="auto">
                   <label for="overflow-auto-radio">
                     Auto
                   </label>
                 </div>
-                <div>
+                <div class="box">
                   <input id="overflow-hidden-radio" name="overflow" type="radio" data-overflow="hidden">
                   <label for="overflow-hidden-radio">
                     Hidden
@@ -151,7 +222,7 @@
               </div>
               <div>
                 <p>Controls</p>
-                <div>
+                <div class="box">
                   <input id="show-controls-cb" type="checkbox" checked>
                   <label for="show-controls-cb">
                     Controls
@@ -162,20 +233,42 @@
                 <p>Video dimensions (%)</p>
               </div>
               <div>
-                <p>Width</p>
                 <div>
-                  <div>
-                    <input id="vid-width-input" type="number" value="100" placeholder="Video width">
-                    <input id="vid-width-range" type="range" min="0" max="100" step="1" value="100">
+                  <div class="box">
+                    <label for="vid-width-input">
+                      Width
+                    </label>
+                    <input id="vid-width-input"
+                           type="number"
+                           value="100"
+                           placeholder="Video width">
+                    
+                    <label for="vid-width-range"></label>
+                    <input id="vid-width-range"
+                           type="range"
+                           min="0"
+                           max="100"
+                           step="1"
+                           value="100">
                   </div>
                 </div>
               </div>
               <div>
-                <p>Height</p>
                 <div>
-                  <div>
-                    <input id="vid-height-input" type="number" value="100" placeholder="Video height">
-                    <input id="vid-height-range" type="range" min="0" max="100" step="1" value="100">
+                  <div class="box">
+                    <label for="vid-height-input">Height</label>
+                    <input id="vid-height-input"
+                           type="number"
+                           value="100"
+                           placeholder="Video height">
+  
+                    <label for="vid-height-range"></label>
+                    <input id="vid-height-range"
+                           type="range"
+                           min="0"
+                           max="100"
+                           step="1"
+                           value="100">
                   </div>
                 </div>
               </div>
@@ -206,13 +299,14 @@
         </div>
       </div>
     </div>
-
+    
     <footer>
       <div>
         <p>Video Studio.js Example Project</p>
         <p>
-          Code licensed under the 
-          <a href="https://github.com/TobiasBriones/example.programming.video-processing.web.video-studio-js/blob/master/LICENSE">
+          Code licensed under the
+          <a
+            href="https://github.com/TobiasBriones/example.programming.video-processing.web.video-studio-js/blob/master/LICENSE">
             MIT
           </a>
           License.
@@ -225,7 +319,7 @@
         </div>
       </div>
     </footer>
-
+    
     <script src="index.js"></script>
   
   </body>

@@ -6,13 +6,13 @@
  */
 
 :root {
-  --accent-color: #d32f2f;
+  --accent-color: #D32F2F;
 }
 
 * {
   position: relative;
-  margin: 0;
   padding: 0;
+  margin: 0;
   box-sizing: border-box;
   font-family: 'Roboto', sans-serif;
   user-select: none;
@@ -50,10 +50,10 @@ a {
 
 button {
   padding: 16px;
+  cursor: pointer;
   border: 1px solid rgba(0, 0, 0, 0.1);
   border-radius: 4px;
   text-transform: uppercase;
-  cursor: pointer;
 }
 
 input[type='number'],
@@ -63,9 +63,9 @@ input[type='radio'] {
 
 input[type='number'] {
   padding: 8px;
+  transition: border 100ms;
   border: 1px solid rgba(0, 0, 0, 0.15);
   border-radius: 6px;
-  transition: border 100ms;
 }
 
 input[type='number']:focus {
@@ -75,11 +75,11 @@ input[type='number']:focus {
 input[type='range'] {
   width: 100%;
   height: 16px;
-  background: #d0d0d0;
-  outline: none;
-  opacity: 0.8;
-  transition: opacity 0.2s;
   cursor: pointer;
+  transition: opacity 0.2s;
+  opacity: 0.8;
+  outline: none;
+  background: #D0D0D0;
   -webkit-appearance: none;
   -moz-appearance: none;
 }
@@ -91,9 +91,9 @@ input[type='range']:hover {
 input[type='range']::-webkit-slider-thumb {
   width: 24px;
   height: 24px;
+  cursor: pointer;
   border-radius: 25%;
   background: var(--accent-color);
-  cursor: pointer;
   -webkit-appearance: none;
   appearance: none;
 }
@@ -101,8 +101,8 @@ input[type='range']::-webkit-slider-thumb {
 input[type='range']::-moz-range-thumb {
   width: 25px;
   height: 25px;
-  background: #4caf50;
   cursor: pointer;
+  background: #4CAF50;
 }
 
 .gone {
@@ -115,7 +115,6 @@ input[type='range']::-moz-range-thumb {
 
 /* -----------------------------  VIDEO INPUT  ------------------------------ */
 #video-input {
-  margin: auto;
   padding: 32px;
   margin: 32px 0;
 }
@@ -149,15 +148,15 @@ input[type='range']::-moz-range-thumb {
 #video-input > .expand-less,
 #video-input > .expand-more {
   position: absolute;
-  bottom: 0px;
-  right: 0px;
+  right: 0;
+  bottom: 0;
   font-size: 48px;
+  cursor: pointer;
+  transition: background-color 200ms;
   color: #212121;
-  background-color: rgba(0, 0, 0, 0.05);
   border: 1px solid #212121;
   border-radius: 50%;
-  transition: background-color 200ms;
-  cursor: pointer;
+  background-color: rgba(0, 0, 0, 0.05);
 }
 
 #video-input > .expand-less:hover,
@@ -187,9 +186,9 @@ input[type='range']::-moz-range-thumb {
   position: absolute;
   width: 0.1px;
   height: 0.1px;
-  opacity: 0;
-  overflow: hidden;
   z-index: -1;
+  overflow: hidden;
+  opacity: 0;
 }
 
 #video-chooser-input + label {
@@ -198,11 +197,11 @@ input[type='range']::-moz-range-thumb {
   margin: auto;
   font-size: 1.25em;
   font-weight: 700;
-  color: white;
-  background-color: #757575;
-  border-radius: 8px;
-  transition: all 200ms;
   cursor: pointer;
+  transition: all 200ms;
+  color: white;
+  border-radius: 8px;
+  background-color: #757575;
 }
 
 #video-chooser-input:focus + label,
@@ -221,8 +220,8 @@ input[type='range']::-moz-range-thumb {
   position: absolute;
   top: 40%;
   left: 50%;
-  transform: translate(-50%, -50%);
   font-size: 600%;
+  transform: translate(-50%, -50%);
   color: #757575;
 }
 
@@ -267,7 +266,7 @@ input[type='range']::-moz-range-thumb {
   text-align: center;
 }
 
-#tools > div > div > div > p {
+#tools .box {
   margin-top: 8px;
   margin-bottom: 16px;
 }
@@ -276,8 +275,8 @@ input[type='range']::-moz-range-thumb {
   padding: 8px;
   float: right;
   font-size: 24px;
-  color: #455a64;
   cursor: pointer;
+  color: #455A64;
 }
 
 #tools > div input[type='number'] {
@@ -307,16 +306,16 @@ input[type='range']::-moz-range-thumb {
 #tools .save-screenshot-pane > canvas {
   display: block;
   width: 100%;
-  background-color: #d0d0d0;
+  background-color: #D0D0D0;
 }
 
 #capture-screenshot {
   width: 96px !important;
   height: 96px;
   margin: auto !important;
-  background-color: var(--accent-color);
-  border-radius: 50%;
   font-weight: bold;
+  border-radius: 50%;
+  background-color: var(--accent-color);
 }
 
 #capture-screenshot:focus {
@@ -331,46 +330,46 @@ input[type='range']::-moz-range-thumb {
   footer {
     padding: 32px 128px;
   }
-
+  
   #content {
     padding: 32px 5%;
   }
-
+  
   #video-input > .video-chooser {
     padding: 32px 0;
   }
-
+  
   #video-input > .video-drag-and-drop {
     width: 100%;
     height: 250px;
     padding: 64px;
     border: 1px solid rgba(0, 0, 0, 0.15);
   }
-
+  
   #video-input > .video-drag-and-drop > p {
     padding: 0 16px;
     bottom: 16px;
   }
-
+  
   #tools {
     margin: 16px;
     grid-template-columns: auto auto;
   }
-
+  
   #tools > .screenshot {
     grid-column-start: 1;
     grid-column-end: 3;
   }
-
+  
   #tools .save-screenshot-pane {
     display: grid;
     grid-template-columns: 30fr 70fr;
   }
-
+  
   #tools .save-screenshot-pane > .buttons {
     margin-right: 32px;
   }
-
+  
   #tools .save-screenshot-pane > canvas {
     min-height: 240px;
   }
@@ -380,50 +379,50 @@ input[type='range']::-moz-range-thumb {
   footer {
     padding: 32px 240px;
   }
-
+  
   #content {
     padding: 32px;
   }
-
+  
   #wrapper-1 {
     display: flex;
   }
-
+  
   #video-input {
     width: 30%;
     padding: 0 16px;
   }
-
+  
   #video-input > .expand-less,
   #video-input > .expand-more {
     top: 0;
-    left: 0;
-    bottom: auto;
     right: auto;
+    bottom: auto;
+    left: 0;
     transform: rotate(-90deg);
   }
-
+  
   #video-input.collapsed {
     width: 10%;
     padding: 1%;
   }
-
+  
   #video-input.collapsed p {
     transform: translateY(96px);
   }
-
+  
   #video-input.expanded p {
     display: block;
   }
-
+  
   #player {
     width: 70%;
   }
-
+  
   #player.wider {
     width: 90%;
   }
-
+  
   #tools {
     margin: 32px 64px;
     grid-template-columns: auto auto auto auto;
@@ -434,16 +433,16 @@ input[type='range']::-moz-range-thumb {
   #content {
     padding: 64px;
   }
-
+  
   #video-input {
     width: 25%;
     padding: 0 64px;
   }
-
+  
   #player {
     width: 75%;
   }
-
+  
   #tools {
     margin: 32px 256px;
   }
@@ -453,11 +452,11 @@ input[type='range']::-moz-range-thumb {
   #content {
     padding: 128px;
   }
-
+  
   #video-input {
     width: 20%;
   }
-
+  
   #player {
     width: 80%;
   }
