@@ -5,6 +5,10 @@
  * LICENSE file in the root directory of this source tree.
  */
 
+:root {
+  --accent-color: #d32f2f;
+}
+
 * {
   position: relative;
   margin: 0;
@@ -17,6 +21,31 @@
 html,
 body {
   min-width: 360px;
+}
+
+footer {
+  padding: 16px 32px;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+footer > div > p {
+  margin: 8px;
+  text-align: center;
+}
+
+footer > div > p > i {
+  color: #737373;
+}
+
+footer .gh {
+  display: flex;
+  justify-content: flex-end;
+}
+
+a {
+  font-weight: bold;
+  color: var(--accent-color);
+  text-decoration: none;
 }
 
 input[type='number'],
@@ -55,7 +84,7 @@ input[type='range']::-webkit-slider-thumb {
   width: 24px;
   height: 24px;
   border-radius: 25%;
-  background: #d32f2f;
+  background: var(--accent-color);
   cursor: pointer;
   -webkit-appearance: none;
   appearance: none;
@@ -170,7 +199,7 @@ input[type='range']::-moz-range-thumb {
 
 #video-chooser-input:focus + label,
 #video-chooser-input + label:hover {
-  background-color: #c62828;
+  background-color: var(--accent-color);
 }
 
 /* -----------------------  VIDEO INPUT DRAG AND DROP ----------------------- */
@@ -254,6 +283,10 @@ input[type='range']::-moz-range-thumb {
 }
 
 @media (min-width: 600px) {
+  footer {
+    padding: 32px 128px;
+  }
+
   #content {
     padding: 32px 5%;
   }
@@ -281,6 +314,10 @@ input[type='range']::-moz-range-thumb {
 }
 
 @media (min-width: 1024px) {
+  footer {
+    padding: 32px 240px;
+  }
+
   #content {
     padding: 32px;
   }
@@ -325,17 +362,7 @@ input[type='range']::-moz-range-thumb {
   }
 
   #tools {
-    margin: 32px 0;
-    grid-template-columns: auto auto auto;
-  }
-
-  #tools {
     margin: 32px 128px;
-  }
-}
-
-@media (min-width: 1024px) {
-  #tools {
     grid-template-columns: auto auto auto auto;
   }
 }
