@@ -201,13 +201,16 @@ input[type='range']::-moz-range-thumb {
 
 /* -----------------------------  VIDEO PLAYER ------------------------------ */
 #player {
+  display: flex;
   width: 100%;
+  min-height: 400px;
+  max-height: 60vh;
   overflow: auto;
 }
 
 #video-player {
   width: 100%;
-  max-height: 60vh;
+  margin: auto;
 }
 
 /* ------------------------------  TOOLS PANEL ------------------------------ */
@@ -228,6 +231,7 @@ input[type='range']::-moz-range-thumb {
 }
 
 #tools > div > div > div > p {
+  margin-top: 8px;
   margin-bottom: 16px;
 }
 

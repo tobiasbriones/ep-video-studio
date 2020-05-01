@@ -196,11 +196,46 @@ function UIManager() {
     videoParentEl.style.overflow = this.dataset['overflow'];
   }
 
+  function onShowControls() {
+    const videoEl = document.getElementById('video-player');
+
+    videoEl.controls = this.checked;
+  }
+
+  function onVideoResizeX() {
+    const widthPercentage = this.value;
+    const videoEl = document.getElementById('video-player');
+
+    if (isNaN(widthPercentage)) return;
+    videoEl.style.width = `${widthPercentage}%`;
+  }
+
+  function onVideoResizeY() {
+    const heightPercentage = this.value;
+    const videoEl = document.getElementById('video-player');
+
+    if (isNaN(heightPercentage)) return;
+    videoEl.style.height = `${heightPercentage}%`;
+  }
+
   function onConfigReset() {
     const overflowAutoEl = document.getElementById('overflow-auto-radio');
+    const controlsCheckButton = document.getElementById('show-controls-cb');
+    const videoWidthInputEl = document.getElementById('vid-width-input');
+    const videoWidthRangeEl = document.getElementById('vid-width-range');
+    const videoHeightInputEl = document.getElementById('vid-height-input');
+    const videoHeightRangeEl = document.getElementById('vid-height-range');
 
     overflowAutoEl.checked = true;
+    controlsCheckButton.checked = true;
+    videoWidthInputEl.value = 100;
+    videoWidthRangeEl.value = 100;
+    videoHeightInputEl.value = 100;
+    videoHeightRangeEl.value = 100;
     onConfigOverflow.call(overflowAutoEl);
+    onShowControls.call(controlsCheckButton);
+    onVideoResizeX.call(videoWidthInputEl);
+    onVideoResizeY.call(videoHeightRangeEl);
   }
 
   // ---------------------------  TOOL FUNCTIONS  --------------------------- //
@@ -257,6 +292,11 @@ function UIManager() {
     const perspectiveRangeEl = document.getElementById('perspective-range');
     const overflowAutoEl = document.getElementById('overflow-auto-radio');
     const overflowHiddenEl = document.getElementById('overflow-hidden-radio');
+    const controlsCheckButton = document.getElementById('show-controls-cb');
+    const videoWidthInputEl = document.getElementById('vid-width-input');
+    const videoWidthRangeEl = document.getElementById('vid-width-range');
+    const videoHeightInputEl = document.getElementById('vid-height-input');
+    const videoHeightRangeEl = document.getElementById('vid-height-range');
     const bindInputAndRange = (inputEl, rangeEl, callback) => {
       inputEl.addEventListener(
         'input',
@@ -303,6 +343,9 @@ function UIManager() {
     // Config
     overflowAutoEl.addEventListener('change', onConfigOverflow, false);
     overflowHiddenEl.addEventListener('change', onConfigOverflow, false);
+    controlsCheckButton.addEventListener('change', onShowControls, false);
+    bindInputAndRange(videoWidthInputEl, videoWidthRangeEl, onVideoResizeX);
+    bindInputAndRange(videoHeightInputEl, videoHeightRangeEl, onVideoResizeY);
     // Reset
     document
       .querySelector('#tools > div.config > span.material-icons')
