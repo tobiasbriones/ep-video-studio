@@ -238,6 +238,28 @@ function UIManager() {
     onVideoResizeY.call(videoHeightRangeEl);
   }
 
+  function onCaptureScreenshot() {
+    const videoEl = document.getElementById('video-player');
+    const canvasEl = document.getElementById('screenshot-canvas');
+    const ctx = canvasEl.getContext('2d');
+
+    canvasEl.width = videoEl.videoWidth;
+    canvasEl.height = videoEl.videoHeight;
+    ctx.drawImage(videoEl, 0, 0, canvasEl.width, canvasEl.height);
+  }
+
+  function onSaveScreenshot() {
+    const canvasEl = document.getElementById('screenshot-canvas');
+    const data = canvasEl.toDataURL('image/png');
+    const newWindow = window.open('about:blank', 'img');
+    const imgEl = document.createElement('img');
+    imgEl.src = data;
+    imgEl.alt = 'img';
+    console.log(canvasEl);
+
+    newWindow.document.body.appendChild(imgEl);
+  }
+
   // ---------------------------  TOOL FUNCTIONS  --------------------------- //
   function setupDragAndDrop() {
     const dropArea = document.getElementById('video-input');
@@ -297,6 +319,8 @@ function UIManager() {
     const videoWidthRangeEl = document.getElementById('vid-width-range');
     const videoHeightInputEl = document.getElementById('vid-height-input');
     const videoHeightRangeEl = document.getElementById('vid-height-range');
+    const screenshotCaptureEl = document.getElementById('capture-screenshot');
+    const screenshotSaveEl = document.getElementById('save-screenshot');
     const bindInputAndRange = (inputEl, rangeEl, callback) => {
       inputEl.addEventListener(
         'input',
@@ -350,6 +374,10 @@ function UIManager() {
     document
       .querySelector('#tools > div.config > span.material-icons')
       .addEventListener('click', onConfigReset, false);
+
+    // Screenshot
+    screenshotCaptureEl.addEventListener('click', onCaptureScreenshot, false);
+    screenshotSaveEl.addEventListener('click', onSaveScreenshot, false);
   }
 
   // --------------------------  PUBLIC FUNCTIONS  -------------------------- //

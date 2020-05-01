@@ -311,9 +311,9 @@ input[type='range']::-moz-range-thumb {
 }
 
 #capture-screenshot {
-  width: 96px;
+  width: 96px !important;
   height: 96px;
-  margin: auto;
+  margin: auto !important;
   background-color: var(--accent-color);
   border-radius: 50%;
   font-weight: bold;
@@ -363,17 +363,15 @@ input[type='range']::-moz-range-thumb {
   }
 
   #tools .save-screenshot-pane {
-    display: flex;
-    flex-wrap: nowrap;
+    display: grid;
+    grid-template-columns: auto auto;
   }
 
   #tools .save-screenshot-pane > .buttons {
-    flex: 0 30%;
     margin-right: 32px;
   }
 
   #tools .save-screenshot-pane > canvas {
-    flex: 0 70%;
     min-height: 240px;
   }
 }
