@@ -15,20 +15,59 @@ function VideoEditor() {
   let rotateX = 0;
   let rotateY = 0;
   let perspective = 0;
-  let blur = 0;
-  let brightness = 1;
+  let filterOptions = {
+    blur: 0,
+    brightness: 1,
+    contrast: 1,
+    dropShadow: {
+      offsetX: 0,
+      offsetY: 0,
+      color: '000000',
+    },
+    grayScale: 0,
+    hueRotate: 0,
+    invert: 0,
+    opacity: 1,
+    saturate: 1,
+    sepia: 0,
+  };
 
   function update() {
+    const updateFilters = () => {
+      const {
+        blur,
+        brightness,
+        contrast,
+        dropShadow,
+        grayScale,
+        hueRotate,
+        invert,
+        opacity,
+        saturate,
+        sepia,
+      } = filterOptions;
+
+      videoEl.style.filter = `
+        blur(${blur}px)
+        brightness(${brightness})
+        contrast(${contrast})
+        drop-shadow(${dropShadow.offsetX}px ${dropShadow.offsetY}px #${dropShadow.color})
+        grayscale(${grayScale})
+        hue-rotate(${hueRotate})
+        invert(${invert})
+        opacity(${opacity})
+        saturate(${saturate})
+        sepia(${sepia})
+      `;
+    };
+
     videoEl.style.transform = `
       scale(${scaleX}, ${scaleY})
       rotate(${rotate}deg)
       rotateX(${rotateX}deg)
       rotateY(${rotateY}deg)
     `;
-    videoEl.style.filter = `
-      blur(${blur}px)
-      brightness(${brightness})
-    `;
+    updateFilters();
     videoParentEl.style.perspective =
       perspective === 0 ? 'none' : `${perspective}px`;
   }
@@ -75,12 +114,54 @@ function VideoEditor() {
   };
 
   this.blur = px => {
-    blur = px;
+    filterOptions.blur = px;
     update();
   };
 
   this.brightness = intensity => {
-    brightness = intensity;
+    filterOptions.brightness = intensity;
+    update();
+  };
+
+  this.contrast = contrast => {
+    filterOptions.contrast = contrast;
+    update();
+  };
+
+  this.dropShadow = (offsetX, offsetY, color = '000000') => {
+    filterOptions.dropShadow.offsetX = offsetX;
+    filterOptions.dropShadow.offsetY = offsetY;
+    filterOptions.dropShadow.color = color;
+    update();
+  };
+
+  this.grayScale = grayScale => {
+    filterOptions.grayScale = grayScale;
+    update();
+  };
+
+  this.hueRotate = hueRotate => {
+    filterOptions.hueRotate = hueRotate;
+    update();
+  };
+
+  this.invert = invert => {
+    filterOptions.invert = invert;
+    update();
+  };
+
+  this.opacity = opacity => {
+    filterOptions.opacity = opacity;
+    update();
+  };
+
+  this.saturate = saturate => {
+    filterOptions.saturate = saturate;
+    update();
+  };
+
+  this.sepia = sepia => {
+    filterOptions.sepia = sepia;
     update();
   };
 }
@@ -274,18 +355,156 @@ function UIManager() {
     videoEditor.brightness(brightnessIntensity);
   }
 
+  function onFilterContrast() {
+    const contrast = this.value;
+
+    if (isNaN(contrast)) return;
+    videoEditor.contrast(contrast);
+  }
+
+  function onFilterDropShadowOffsetX() {
+    const offsetYInputEl = document.getElementById(
+      'drop-shadow-offset-y-input'
+    );
+    const offsetX = this.value;
+
+    if (isNaN(offsetX)) return;
+    videoEditor.dropShadow(offsetX, offsetYInputEl.value);
+  }
+
+  function onFilterDropShadowOffsetY() {
+    const offsetXInputEl = document.getElementById(
+      'drop-shadow-offset-x-input'
+    );
+    const offsetY = this.value;
+
+    if (isNaN(offsetY)) return;
+    videoEditor.dropShadow(offsetXInputEl.value, offsetY);
+  }
+
+  function onFilterDropShadowColor() {
+    const offsetXInputEl = document.getElementById(
+      'drop-shadow-offset-x-input'
+    );
+    const offsetYInputEl = document.getElementById(
+      'drop-shadow-offset-y-input'
+    );
+    const color = this.value;
+
+    videoEditor.dropShadow(offsetXInputEl.value, offsetYInputEl.value, color);
+  }
+
+  function onFilterGrayScale() {
+    const grayScale = this.value;
+
+    if (isNaN(grayScale)) return;
+    videoEditor.grayScale(grayScale);
+  }
+
+  function onFilterHueRotate() {
+    const hueRotate = this.value;
+
+    if (isNaN(hueRotate)) return;
+    videoEditor.hueRotate(hueRotate);
+  }
+
+  function onFilterInvert() {
+    const invert = this.value;
+
+    if (isNaN(invert)) return;
+    videoEditor.invert(invert);
+  }
+
+  function onFilterOpacity() {
+    const opacity = this.value;
+
+    if (isNaN(opacity)) return;
+    videoEditor.opacity(opacity);
+  }
+
+  function onFilterSaturate() {
+    const saturate = this.value;
+
+    if (isNaN(saturate)) return;
+    videoEditor.saturate(saturate);
+  }
+
+  function onFilterSepia() {
+    const sepia = this.value;
+
+    if (isNaN(sepia)) return;
+    videoEditor.sepia(sepia);
+  }
+
   function onFiltersReset() {
     const blurSizeInputEl = document.getElementById('blur-px-input');
     const blurSizeRangeEl = document.getElementById('blur-px-range');
     const brightnessInputEl = document.getElementById('brightness-input');
     const brightnessRangeEl = document.getElementById('brightness-range');
+    const contrastInputEl = document.getElementById('contrast-input');
+    const contrastRangeEl = document.getElementById('contrast-range');
+    const dropShadowOffsetXInputEl = document.getElementById(
+      'drop-shadow-offset-x-input'
+    );
+    const dropShadowOffsetXRangeEl = document.getElementById(
+      'drop-shadow-offset-x-range'
+    );
+    const dropShadowOffsetYInputEl = document.getElementById(
+      'drop-shadow-offset-y-input'
+    );
+    const dropShadowOffsetYRangeEl = document.getElementById(
+      'drop-shadow-offset-y-range'
+    );
+    const dropShadowColorInputEl = document.getElementById(
+      'drop-shadow-color-input'
+    );
+    const grayScaleInputEl = document.getElementById('grayscale-input');
+    const grayScaleRangeEl = document.getElementById('grayscale-range');
+    const hueRotateInputEl = document.getElementById('hue-rotate-input');
+    const hueRotateRangeEl = document.getElementById('hue-rotate-range');
+    const invertInputEl = document.getElementById('invert-input');
+    const invertRangeEl = document.getElementById('invert-range');
+    const opacityInputEl = document.getElementById('opacity-input');
+    const opacityRangeEl = document.getElementById('opacity-range');
+    const saturateInputEl = document.getElementById('saturate-input');
+    const saturateRangeEl = document.getElementById('saturate-range');
+    const sepiaInputEl = document.getElementById('sepia-input');
+    const sepiaRangeEl = document.getElementById('sepia-range');
 
     blurSizeInputEl.value = 0;
     blurSizeRangeEl.value = 0;
     brightnessInputEl.value = 1;
     brightnessRangeEl.value = 1;
+    contrastInputEl.value = 1;
+    contrastRangeEl.value = 1;
+    dropShadowOffsetXInputEl.value = 0;
+    dropShadowOffsetXRangeEl.value = 0;
+    dropShadowOffsetYInputEl.value = 0;
+    dropShadowOffsetYRangeEl.value = 0;
+    dropShadowColorInputEl.value = '000000';
+    grayScaleInputEl.value = 0;
+    grayScaleRangeEl.value = 0;
+    hueRotateInputEl.value = 0;
+    hueRotateRangeEl.value = 0;
+    invertInputEl.value = 0;
+    invertRangeEl.value = 0;
+    opacityInputEl.value = 1;
+    opacityRangeEl.value = 1;
+    saturateInputEl.value = 1;
+    saturateRangeEl.value = 1;
+    sepiaInputEl.value = 0;
+    sepiaRangeEl.value = 0;
+
     onFilterBlur.call(blurSizeInputEl);
     onFilterBrightness.call(brightnessInputEl);
+    onFilterContrast.call(contrastInputEl);
+    onFilterDropShadowOffsetX.call(dropShadowOffsetXInputEl); // One call is enough
+    onFilterGrayScale.call(grayScaleInputEl);
+    onFilterHueRotate.call(hueRotateInputEl);
+    onFilterInvert.call(invertInputEl);
+    onFilterOpacity.call(opacityInputEl);
+    onFilterSaturate.call(saturateInputEl);
+    onFilterSepia.call(sepiaInputEl);
   }
 
   function onCaptureScreenshot() {
@@ -379,6 +598,35 @@ function UIManager() {
     const blurSizeRangeEl = document.getElementById('blur-px-range');
     const brightnessInputEl = document.getElementById('brightness-input');
     const brightnessRangeEl = document.getElementById('brightness-range');
+    const contrastInputEl = document.getElementById('contrast-input');
+    const contrastRangeEl = document.getElementById('contrast-range');
+    const dropShadowOffsetXInputEl = document.getElementById(
+      'drop-shadow-offset-x-input'
+    );
+    const dropShadowOffsetXRangeEl = document.getElementById(
+      'drop-shadow-offset-x-range'
+    );
+    const dropShadowOffsetYInputEl = document.getElementById(
+      'drop-shadow-offset-y-input'
+    );
+    const dropShadowOffsetYRangeEl = document.getElementById(
+      'drop-shadow-offset-y-range'
+    );
+    const dropShadowColorInputEl = document.getElementById(
+      'drop-shadow-color-input'
+    );
+    const grayScaleInputEl = document.getElementById('grayscale-input');
+    const grayScaleRangeEl = document.getElementById('grayscale-range');
+    const hueRotateInputEl = document.getElementById('hue-rotate-input');
+    const hueRotateRangeEl = document.getElementById('hue-rotate-range');
+    const invertInputEl = document.getElementById('invert-input');
+    const invertRangeEl = document.getElementById('invert-range');
+    const opacityInputEl = document.getElementById('opacity-input');
+    const opacityRangeEl = document.getElementById('opacity-range');
+    const saturateInputEl = document.getElementById('saturate-input');
+    const saturateRangeEl = document.getElementById('saturate-range');
+    const sepiaInputEl = document.getElementById('sepia-input');
+    const sepiaRangeEl = document.getElementById('sepia-range');
     const screenshotCaptureEl = document.getElementById('capture-screenshot');
     const screenshotSaveEl = document.getElementById('save-screenshot');
     const bindInputAndRange = (inputEl, rangeEl, callback) => {
@@ -438,6 +686,30 @@ function UIManager() {
     // Filters
     bindInputAndRange(blurSizeInputEl, blurSizeRangeEl, onFilterBlur);
     bindInputAndRange(brightnessInputEl, brightnessRangeEl, onFilterBrightness);
+    bindInputAndRange(contrastInputEl, contrastRangeEl, onFilterContrast);
+    bindInputAndRange(
+      dropShadowOffsetXInputEl,
+      dropShadowOffsetXRangeEl,
+      onFilterDropShadowOffsetX
+    );
+    bindInputAndRange(
+      dropShadowOffsetYInputEl,
+      dropShadowOffsetYRangeEl,
+      onFilterDropShadowOffsetY
+    );
+    bindInputAndRange(grayScaleInputEl, grayScaleRangeEl, onFilterGrayScale);
+    bindInputAndRange(hueRotateInputEl, hueRotateRangeEl, onFilterHueRotate);
+    bindInputAndRange(invertInputEl, invertRangeEl, onFilterInvert);
+    bindInputAndRange(opacityInputEl, opacityRangeEl, onFilterOpacity);
+    bindInputAndRange(saturateInputEl, saturateRangeEl, onFilterSaturate);
+    bindInputAndRange(sepiaInputEl, sepiaRangeEl, onFilterSepia);
+
+    dropShadowColorInputEl.addEventListener(
+      'change',
+      onFilterDropShadowColor,
+      false
+    );
+
     // Reset
     document
       .querySelector('#tools > div.filters > span.material-icons')

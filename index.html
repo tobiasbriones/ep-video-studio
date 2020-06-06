@@ -5,7 +5,7 @@
   -- LICENSE file in the root directory of this source tree.
   -->
 
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <title>Video Studio.js</title>
@@ -24,6 +24,8 @@
   <body>
     
     <div id="content">
+
+      <!-- -----------------  WRAPPER FOR INPUT AND PLAYER  ---------------- -->
       <div id="wrapper-1">
         <div id="video-input">
           <p>
@@ -58,6 +60,7 @@
         </div>
       </div>
       
+      <!-- ------------------  TOOLS AND EDITING OPTIONS  ------------------ -->
       <div>
         <div id="tools">
           <div class="scale">
@@ -286,9 +289,7 @@
               <div>
                 <p>Blur</p>
                 <div class="box">
-                  <label for="blur-px-input">
-                    Size (px)
-                  </label>
+                  <label for="blur-px-input"></label>
                   <input id="blur-px-input"
                          type="number"
                          value="0"
@@ -306,9 +307,7 @@
               <div>
                 <p>Brightness</p>
                 <div class="box">
-                  <label for="brightness-input">
-                    Intensity
-                  </label>
+                  <label for="brightness-input"></label>
                   <input id="brightness-input"
                          type="number"
                          value="1"
@@ -321,6 +320,178 @@
                         max="1"
                         step="0.1"
                         value="1">
+                </div>
+              </div>
+              <div>
+                <p>Contrast</p>
+                <div class="box">
+                  <label for="brightness-input"></label>
+                  <input id="contrast-input"
+                         type="number"
+                         value="1"
+                         placeholder="Contrast">
+
+                  <label for="contrast-range"></label>
+                  <input id="contrast-range"
+                        type="range"
+                        min="0"
+                        max="1"
+                        step="0.1"
+                        value="1">
+                </div>
+              </div>
+              <div>
+                <p>Drop Shadow</p>
+                <div class="box">
+                  <label for="drop-shadow-offset-x-input">
+                    Offset X (px)
+                  </label>
+                  <input id="drop-shadow-offset-x-input"
+                         type="number"
+                         value="0"
+                         placeholder="Offset X (px)">
+
+                  <label for="drop-shadow-offset-x-range"></label>
+                  <input id="drop-shadow-offset-x-range"
+                        type="range"
+                        min="0"
+                        max="100"
+                        step="1"
+                        value="0">
+                </div>
+                <div class="box">
+                  <label for="drop-shadow-offset-y-input">
+                    Offset Y (px)
+                  </label>
+                  <input id="drop-shadow-offset-y-input"
+                         type="number"
+                         value="0"
+                         placeholder="Offset Y (px)">
+
+                  <label for="drop-shadow-offset-y-range"></label>
+                  <input id="drop-shadow-offset-y-range"
+                        type="range"
+                        min="0"
+                        max="100"
+                        step="1"
+                        value="0">
+                </div>
+                <div class="box">
+                  <label for="drop-shadow-color-input">
+                    Color (HEX)
+                  </label>
+                  <input id="drop-shadow-color-input"
+                         type="text"
+                         value="000000"
+                         placeholder="Color">
+                </div>
+              </div>
+              <div>
+                <p>Gray Scale</p>
+                <div class="box">
+                  <label for="grayscale-input"></label>
+                  <input id="grayscale-input"
+                         type="number"
+                         value="0"
+                         placeholder="Gray Scale">
+
+                  <label for="grayscale-range"></label>
+                  <input id="grayscale-range"
+                        type="range"
+                        min="0"
+                        max="1"
+                        step="0.1"
+                        value="0">
+                </div>
+              </div>
+              <div>
+                <p>Hue Rotate (deg)</p>
+                <div class="box">
+                  <label for="hue-rotate-input"></label>
+                  <input id="hue-rotate-input"
+                         type="number"
+                         value="0"
+                         placeholder="Hue rotate (deg)">
+
+                  <label for="hue-rotate-range"></label>
+                  <input id="hue-rotate-range"
+                        type="range"
+                        min="0"
+                        max="360"
+                        step="1"
+                        value="0">
+                </div>
+              </div>
+              <div>
+                <p>Invert</p>
+                <div class="box">
+                  <label for="invert-input"></label>
+                  <input id="invert-input"
+                         type="number"
+                         value="0"
+                         placeholder="Invert">
+
+                  <label for="invert-range"></label>
+                  <input id="invert-range"
+                        type="range"
+                        min="0"
+                        max="1"
+                        step="0.1"
+                        value="0">
+                </div>
+              </div>
+              <div>
+                <p>Opacity</p>
+                <div class="box">
+                  <label for="opacity-input"></label>
+                  <input id="opacity-input"
+                         type="number"
+                         value="1"
+                         placeholder="Opacity">
+
+                  <label for="opacity-range"></label>
+                  <input id="opacity-range"
+                        type="range"
+                        min="0"
+                        max="1"
+                        step="0.1"
+                        value="1">
+                </div>
+              </div>
+              <div>
+                <p>Saturate</p>
+                <div class="box">
+                  <label for="saturate-input"></label>
+                  <input id="saturate-input"
+                         type="number"
+                         value="1"
+                         placeholder="Saturate">
+
+                  <label for="saturate-range"></label>
+                  <input id="saturate-range"
+                        type="range"
+                        min="0"
+                        max="1"
+                        step="0.1"
+                        value="1">
+                </div>
+              </div>
+              <div>
+                <p>Sepia</p>
+                <div class="box">
+                  <label for="sepia-input"></label>
+                  <input id="sepia-input"
+                         type="number"
+                         value="0"
+                         placeholder="Sepia">
+
+                  <label for="sepia-range"></label>
+                  <input id="sepia-range"
+                        type="range"
+                        min="0"
+                        max="1"
+                        step="0.1"
+                        value="0">
                 </div>
               </div>
             </div>
