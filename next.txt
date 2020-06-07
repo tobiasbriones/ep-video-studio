@@ -1,6 +1,6 @@
 Features for v1.1
 X Filters
 - More flexible UI
-- Enhance comment blocks and/or split code into separate modules
+X Enhance comment blocks and/or split code into separate modules, use webpack
 - Fix blinking with certain player sizes
 - Create the PWA

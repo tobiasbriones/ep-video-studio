@@ -1,0 +1,30 @@
+{
+  "name": "example.programming.video-processing.web.video-studio",
+  "version": "1.0.0",
+  "description": "Basic video editor example project that applies transformations and filters to videos.",
+  "main": "index.mjs",
+  "scripts": {
+    "start": "webpack"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TobiasBriones/example.programming.video-processing.web.video-studio-js.git"
+  },
+  "keywords": [
+    "example-project",
+    "web-app",
+    "video-processing",
+    "transformations",
+    "filters"
+  ],
+  "author": "Tobias Briones <tobiasbriones.dev@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/TobiasBriones/example.programming.video-processing.web.video-studio-js/issues"
+  },
+  "homepage": "https://github.com/TobiasBriones/example.programming.video-processing.web.video-studio-js#readme",
+  "devDependencies": {
+    "webpack": "^4.43.0",
+    "webpack-cli": "^3.3.11"
+  }
+}

@@ -5,7 +5,7 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import UIManager from './ui/UIManager.mjs';
+import UIManager from './app/ui/UIManager.mjs';
 
 const uiManager = new UIManager();
 
