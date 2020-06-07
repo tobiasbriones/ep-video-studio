@@ -1,5 +1,6 @@
 Features for v1.1
-- Filters
+X Filters
 - More flexible UI
 - Enhance comment blocks and/or split code into separate modules
+- Fix blinking with certain player sizes
 - Create the PWA
