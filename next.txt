@@ -1,6 +1,20 @@
-Features for v1.1
+Features for v2.0
 X Filters
+- Implement web components
 - More flexible UI
 X Enhance comment blocks and/or split code into separate modules, use webpack
 - Fix blinking with certain player sizes
+- Add feature load from video URL
+- Add feature user settings in local storage
 - Create the PWA
+- Implement canvas to play the video
+- Implement Commands for redo and undo actions
+- Download the video with the effects
+- Document the app
+
+This app's requirements are well know and quite simple, that's why creating the
+technical documentation later is good as well. The process might be considered
+to be iterative. I hope have free time to implement these features and release
+the next version soon.
+
+Tobias Briones
