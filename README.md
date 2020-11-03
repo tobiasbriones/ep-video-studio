@@ -7,7 +7,9 @@ It is left to add filters to the video for the next release.
 
 ## Screenshots
 ![Screenshot 1](https://raw.githubusercontent.com/TobiasBriones/images-nl/master/example-projects/example.programming.video-processing.web.video-studio-js/screenshot-1.png)
-===
+
+---
+
 ![Screenshot 2](https://raw.githubusercontent.com/TobiasBriones/images-nl/master/example-projects/example.programming.video-processing.web.video-studio-js/screenshot-2.png)
 
 ## License
