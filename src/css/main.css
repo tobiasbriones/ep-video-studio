@@ -1,8 +1,13 @@
 /*
- * Copyright (c) 2020 Tobias Briones.
+ * Copyright (c) 2020 Tobias Briones. All rights reserved.
  *
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
+ * SPDX-License-Identifier: MIT
+ *
+ * This file is part of Example Project: Video Studio.
+ *
+ * This source code is licensed under the MIT License found in the LICENSE file
+ * in the root directory of this source tree or at
+ * https://opensource.org/licenses/MIT.
  */
 
 footer {
@@ -61,13 +66,13 @@ footer .gh {
   position: absolute;
   right: 0;
   bottom: 0;
-  font-size: 48px;
-  cursor: pointer;
-  transition: background-color 200ms;
-  color: #212121;
+  background-color: rgba(0, 0, 0, 0.05);
   border: 1px solid #212121;
   border-radius: 50%;
-  background-color: rgba(0, 0, 0, 0.05);
+  font-size: 48px;
+  color: #212121;
+  transition: background-color 200ms;
+  cursor: pointer;
 }
 
 #video-input > .expand-less:hover,
@@ -97,8 +102,8 @@ footer .gh {
   position: absolute;
   width: 0.1px;
   height: 0.1px;
-  z-index: -1;
   overflow: hidden;
+  z-index: -1;
   opacity: 0;
 }
 
@@ -106,13 +111,13 @@ footer .gh {
   display: inline-block;
   padding: 16px;
   margin: auto;
+  background-color: #757575;
+  border-radius: 8px;
   font-size: 1.25em;
   font-weight: 700;
-  cursor: pointer;
-  transition: all 200ms;
   color: white;
-  border-radius: 8px;
-  background-color: #757575;
+  transition: all 200ms;
+  cursor: pointer;
 }
 
 #video-chooser-input:focus + label,
@@ -132,8 +137,8 @@ footer .gh {
   top: 40%;
   left: 50%;
   font-size: 600%;
-  transform: translate(-50%, -50%);
   color: #757575;
+  transform: translate(-50%, -50%);
 }
 
 #video-input > .video-drag-and-drop > p {
@@ -142,8 +147,8 @@ footer .gh {
   padding: 0 8px;
   bottom: 16px;
   left: 50%;
-  transform: translate(-50%, -50%);
   text-align: center;
+  transform: translate(-50%, -50%);
 }
 
 /* -----------------------------  VIDEO PLAYER ------------------------------ */
@@ -187,8 +192,8 @@ footer .gh {
   padding: 8px;
   float: right;
   font-size: 24px;
-  cursor: pointer;
   color: #455a64;
+  cursor: pointer;
 }
 
 #tools > div input[type='text'],
@@ -226,9 +231,9 @@ footer .gh {
   width: 96px !important;
   height: 96px;
   margin: auto !important;
-  font-weight: bold;
-  border-radius: 50%;
   background-color: var(--accent-color);
+  border-radius: 50%;
+  font-weight: bold;
 }
 
 #capture-screenshot:focus {
