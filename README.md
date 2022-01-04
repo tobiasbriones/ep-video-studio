@@ -1,20 +1,33 @@
 # Example Project: Video Studio
-[![License](https://img.shields.io/github/license/TobiasBriones/example.programming.video-processing.web.video-studio-js)](https://github.com/TobiasBriones/example.programming.video-processing.web.video-studio-js/blob/master/LICENSE)
 
-Web app that allows a user to load a video and apply basic transformations to it and some effects.
+[![GitHub Repository](https://raw.githubusercontent.com/tobiasbriones/static/main/gh-badge.svg)](https://github.com/tobiasbriones/ep-video-studio)
+
+[![GitHub Project License](https://img.shields.io/github/license/tobiasbriones/ep-video-studio.svg?style=flat-square)](https://github.com/tobiasbriones/ep-video-studio/blob/main/LICENSE)
+
+Web app that allows a user to load a video and apply basic transformations to it
+and some effects.
 
 It is left to add filters to the video for the next release.
 
+Go to: [App](https://video-studio.ep.dev.mathsoftware.engineer)
+
 ## Screenshots
-![Screenshot 1](https://raw.githubusercontent.com/TobiasBriones/images-nl/master/example-projects/example.programming.video-processing.web.video-studio-js/screenshot-1.png)
+
+![Screenshot 1](https://github.com/tobiasbriones/ep-video-studio/releases/download/v1.0.0/screenshot-1.png)
 
 ---
 
-![Screenshot 2](https://raw.githubusercontent.com/TobiasBriones/images-nl/master/example-projects/example.programming.video-processing.web.video-studio-js/screenshot-2.png)
+![Screenshot 2](https://github.com/tobiasbriones/ep-video-studio/releases/download/v1.0.0/screenshot-2.png)
 
-## License
-Example Project: Video Studio
+## About
+
+**Example Project: Video Studio**
+
+Web app that allows a user to load a video and apply basic transformations to it
+and some effects.
 
 Copyright © 2020 Tobias Briones. All rights reserved.
 
-This software is licensed under the [MIT License](https://github.com/TobiasBriones/example.programming.video-processing.web.video-studio-js/blob/master/LICENSE).
+### License
+
+This project is licensed under the [MIT License](./LICENSE).
